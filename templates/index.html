@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form method="POST">
+        <label for="amount">Amount:</label>
+        <input
+            type="number"
+            step="0.01"
+            id="amount"
+            name="amount"
+            required
+            value="1"
+        />
+
+        <label for="from_currency">From:</label>
+        <select id="from_currency" name="from_currency">
+            {% for currency_info in currencies %}
+                <option value="{{ currency_info[0] }}">
+                    {{ currency_info[1] }} ({{ currency_info[0] }})
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="to_currency">To:</label>
+        <select id="to_currency" name="to_currency">
+            {% for currency_info in currencies %}
+                <option value="{{ currency_info[0] }}">
+                    {{ currency_info[1] }} ({{ currency_info[0] }})
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+    {% endif %}
+</body>
+</html>
+
