@@ -11,6 +11,7 @@ This project is a simple currency converter web application built using Python's
 
 - `app.py`: The main Python script that defines the Flask app and handles requests.
 - `index.html`: The HTML template that renders the user interface for the currency converter.
+- `.env`: Environment file to store your API key securely.
 
 ## Explanation of `app.py`
 
@@ -19,10 +20,13 @@ from flask import Flask, render_template, request
 import requests
 ```
 - **Importing Libraries**:
+  - `os`
   - `Flask`: The core class for creating the web application.
   - `render_template`: A function to render HTML templates.
   - `request`: An object to access incoming request data (like form inputs).
-  - `requests`: A library to handle HTTP requests, used here to fetch data from an external API.
+  - `requests`: A library to handle HTTP requests, used here to fetch data from an external
+   API.
+
 
 ```python
 app = Flask(__name__)
@@ -32,7 +36,8 @@ app = Flask(__name__)
 ### Setting Up the API Details
 
 ```python
-API_KEY = 'b2f05ff958fec0f96caddb74'
+load_dotenv()
+API_KEY = 'os.getenv('API_KEY)'
 BASE_URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}"
 ```
 - **API_KEY**: A placeholder API key for the currency conversion API.
