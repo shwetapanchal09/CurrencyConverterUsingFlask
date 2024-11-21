@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request
 import requests
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
+load_dotenv()
 # Replace with your actual API key
-API_KEY = 'b2f05ff958fec0f96caddb74'
+API_KEY = os.getenv('API_KEY')
 BASE_URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}"
 
 # Fetch supported currencies
